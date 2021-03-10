@@ -1,6 +1,7 @@
 say_hi_for_testers:
     stage: test
-    image: gradle
+    image: jsantisi/alpine-gradle-chrome
+
     script:
         - gradle test
 
