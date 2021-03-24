@@ -65,6 +65,13 @@ In the after phase we quit from the browser if it is initialized well (non-null)
     }
 ```
 
+We have to import the used libraries:
+
+```
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.*;
+```
+
 # Create a basic test
 
 As an entry point, we can ask the driver, that created in the `setup`, to open a webpage.
@@ -88,8 +95,14 @@ https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting
 In setup phase we create a `WebDriverWait` that handles us how long do we will wait for a page loading or an element appearance.
 Not we set this timeout to 10 seconds, so it will throw a timeout exception if 10 second passes without fulfilling a condition.
 
+In the setup:
 ```
 wait = new WebDriverWait(driver, 10);
+```
+
+In the class we add a variable:
+```
+private WebDriverWait wait;
 ```
 
 What condition?
