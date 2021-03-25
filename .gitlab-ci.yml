@@ -1,6 +1,0 @@
-say_hi_for_testers:
-    stage: test
-    image: marcellodesales/gradle-chrome
-    script:
-        - gradle test
-
