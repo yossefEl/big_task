@@ -10,7 +10,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.support.ui.*;
 
 
-public class FirstSelenium {
+public class FirstSeleniumTest {
 
     private WebDriver driver;
     private WebDriverWait wait;
