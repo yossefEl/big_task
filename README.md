@@ -70,6 +70,7 @@ We have to import the used libraries:
 ```
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
 ```
 
 # Create a basic test
@@ -109,6 +110,12 @@ What condition?
 
 ```
 this.wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
+```
+
+To use this we have to import ExpectedConditions:
+
+```
+import org.openqa.selenium.support.ui.*;
 ```
 
 With this line, we ask our `WebDriverWait` to wait for appearing of an element.
@@ -174,8 +181,8 @@ After this we can use shorter version:
     this.wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
     WebElement bodyAgain = this.driver.findElement(By.tagName("body"));
     System.out.println(bodyAgain.getText());
-    Assert.assertTrue(bodyAgain.getText().contains("found"));
-    Assert.assertTrue(bodyAgain.getText().contains("For Students"));
+    Assert.assertTrue(bodyAgain.getText().contains("FOUND"));
+    Assert.assertTrue(bodyAgain.getText().contains("Current Students"));
 ```
 
 # Do it nicer
@@ -193,7 +200,6 @@ With this function we can write shorter our test case.
 
 ```
     this.driver.get("https://www.inf.elte.hu/en/");
-
     Assert.assertTrue(this.waitAndReturnElement(By.className("footer-block")).getText().contains("2021 ELTE Faculty of Informatics"));
 
     this.waitAndReturnElement(By.className("search-bar-toggler")).click();
@@ -203,8 +209,8 @@ With this function we can write shorter our test case.
     WebElement bodyElemnet = this.waitAndReturnElement(By.tagName("body"));
     System.out.println("-------------------------------------");
     System.out.println(bodyElemnet.getText());
-    Assert.assertTrue(bodyElemnet.getText().contains("found"));
-    Assert.assertTrue(bodyElemnet.getText().contains("For Students"));
+    Assert.assertTrue(bodyElemnet.getText().contains("FOUND"));
+    Assert.assertTrue(bodyElemnet.getText().contains("Current Students"));
 ```
 
 
