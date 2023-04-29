@@ -1,14 +1,14 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-
 import org.junit.*;
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
-
 import org.openqa.selenium.support.ui.*;
-
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import java.net.URL;
+import java.net.MalformedURLException;
 
 public class FirstSeleniumTest {
 
@@ -16,9 +16,9 @@ public class FirstSeleniumTest {
     private WebDriverWait wait;
 
     @Before
-    public void setup() {
+    public void setup() throws MalformedURLException {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), DesiredCapabilities.chrome());
         driver.manage().window().maximize();
 
         wait = new WebDriverWait(driver, 10);
@@ -42,20 +42,20 @@ public class FirstSeleniumTest {
         WebElement resultElement = waitVisibiiltyAndFindElement(bodyLocator );
         System.out.println(resultElement.getText());
         Assert.assertTrue(resultElement.getText().contains("2021 ELTE Faculty of Informatics"));
-        
-        
+
+
         WebElement searchTogglerElement = waitVisibiiltyAndFindElement(searchTogglerLocator);
         searchTogglerElement.click();
-        
+
         WebElement searchBarElement = waitVisibiiltyAndFindElement(searchLocator);
         searchBarElement.sendKeys("Student \n");
-        
+
         WebElement bodyElement = waitVisibiiltyAndFindElement(bodyLocator);
         System.out.println(bodyElement.getText());
         Assert.assertTrue(bodyElement.getText().contains("Student Support Centre"));
-        
+
     }
-    
+
     @After
     public void close() {
         if (driver != null) {
