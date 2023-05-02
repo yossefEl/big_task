@@ -3,10 +3,8 @@ import static org.junit.Assert.assertFalse;
 import org.junit.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.*;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.support.ui.*;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import java.net.URL;
 import java.net.MalformedURLException;
 
@@ -17,7 +15,6 @@ public class FirstSeleniumTest {
 
     @Before
     public void setup() throws MalformedURLException {
-        WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), options);
         driver.manage().window().maximize();
@@ -37,7 +34,7 @@ public class FirstSeleniumTest {
     }
 
     @Test
-    public void multiplicationTest() {
+    public void testSearchBar() {
         this.driver.get("https://www.inf.elte.hu/en/");
 
         WebElement resultElement = waitVisibiiltyAndFindElement(bodyLocator );
