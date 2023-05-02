@@ -7,33 +7,63 @@ https://www.youtube.com/watch?v=QtiYGKyRUIk
 We can test UI or webpage with Selenium tests.
 Need to define the actions what the user should do to do different actions.
 
+# Docker Compose
+
+The Docker has a second level of organization. 
+The composing. 
+At that level we can initate multiple containers with different configurations.
+
+https://docs.docker.com/compose/gettingstarted/
+
+We have a prepared docker compose that contain all of the necessary tools that makes us avaiable to run selenium tests in docker.
+That tool will setup a noVNC server, a chrome running in an image and an image that has gradle and java to be able to run the Selenium tests.
+
+The Selenium Chrome image has a port open 4444, where we can connect to the chrome.
+
+The noVNC server can be watched on the http://localhost:8081/ url after you started the compose.
+
+You can start the composition of images with the following command: 
+
+```
+docker compose up
+```
+
+After all of the containers are running we can have a console where we have the gradle with:
+
+```
+docker exec -it selenium_testenv bash
+```
+
 # Gradle
 
-Now we only need to add new dependencies that makes us avaiable to use Selenium tests.
+We need to add new dependencies that makes us avaiable to use Selenium tests.
 We will use chrome driver but you can find other drivers as well: https://mvnrepository.com/artifact/org.seleniumhq.selenium
 
+Our new dependencies will be the following:
 ```
-    testCompile 'org.seleniumhq.selenium:selenium-java:2.52.0'
-    testCompile 'org.seleniumhq.selenium:selenium-chrome-driver:2.23.0'
-    testCompile 'io.github.bonigarcia:webdrivermanager:4.3.1'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:2.52.0'
+    testImplementation 'org.seleniumhq.selenium:selenium-chrome-driver:3.141.59'
+    testImplementation('junit:junit:4.12'){
+        exclude group: 'org.hamcrest'
+    }
+    testImplementation 'org.hamcrest:hamcrest-library:1.3'
+    testImplementation "org.slf4j:slf4j-simple:1.7.9"
 ```
 
-First package is the base of the selenium testing.
-The second is the Chrome driver, that can be canged to other browser.
-The last package is the manager that helps to setup the browser driver.
+These dependencies loads everything that we will need for Selenium testing.
 
 # Init and close the web driver
 
-We have to initialize the chrome driver first.
+We have to initialize the chrome driver first. We connect to the `selenium` image 4444 port to run there our selenium tests.
 
 ```
-    WebDriverManager.chromedriver().setup();
-    driver = new ChromeDriver();
+    ChromeOptions options = new ChromeOptions();
+    driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), options);
 ```
 
 We need also a variable to store the driver:
 ```
-    private ChromeDriver driver;
+    private WebDriver driver;
 ```
 
 https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/WebDriver.html
@@ -51,9 +81,8 @@ We put this into the setup function that runs before the tests.
 ```
     @Before
     public void setup() {
-        WebDriverManager.chromedriver().setup();
-
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), options);
         driver.manage().window().maximize();
     }
 ```
@@ -73,7 +102,7 @@ We have to import the used libraries:
 ```
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.*;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.remote.RemoteWebDriver;
 ```
 
 # Create a basic test
@@ -138,11 +167,8 @@ We ask the driver to please return us the body and from that point the elemnet c
 By default the gradle won't show standard output on every version, so we may have to enable now.
 Add into gradle the following:
 ```
-test{
-    testLogging {
-        outputs.upToDateWhen {false}
-        showStandardStreams = true
-    }
+test {
+    testLogging.showStandardStreams = true
 }
 ```
 
@@ -203,24 +229,24 @@ With this function we can write shorter our test case.
 
 ```
     this.driver.get("https://www.inf.elte.hu/en/");
-    Assert.assertTrue(this.waitAndReturnElement(By.className("footer-block")).getText().contains("2021 ELTE Faculty of Informatics"));
 
-    this.waitAndReturnElement(By.className("search-bar-toggler")).click();
+    WebElement resultElement = waitVisibiiltyAndFindElement(bodyLocator );
+    System.out.println(resultElement.getText());
+    Assert.assertTrue(resultElement.getText().contains("2021 ELTE Faculty of Informatics"));
 
-    this.waitAndReturnElement(By.name("search")).sendKeys("Students\n");
+    WebElement searchTogglerElement = waitVisibiiltyAndFindElement(searchTogglerLocator);
+    searchTogglerElement.click();
 
-    WebElement bodyElemnet = this.waitAndReturnElement(By.tagName("body"));
-    System.out.println("-------------------------------------");
-    System.out.println(bodyElemnet.getText());
-    Assert.assertTrue(bodyElemnet.getText().contains("FOUND"));
-    Assert.assertTrue(bodyElemnet.getText().contains("Current Students"));
+    WebElement searchBarElement = waitVisibiiltyAndFindElement(searchLocator);
+    searchBarElement.sendKeys("Student \n");
+
+    WebElement bodyElement = waitVisibiiltyAndFindElement(bodyLocator);
+    System.out.println(bodyElement.getText());
+    Assert.assertTrue(bodyElement.getText().contains("Student Support Centre"));
 ```
-
-
 
 # Task
 
-- Attendance
 - Open the http://selenium.thinkcode.se page with selenium
 - Open the request password example by clicking onto the "Request password - fill out and submit a form" link. This click has to be done by the Selenium, so do not get directly the http://selenium.thinkcode.se/requestPassword url.
 - Request a new password on the example page. Check the printed username is correct or not.
