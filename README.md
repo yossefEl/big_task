@@ -1,5 +1,10 @@
 # Video
 
+Docker compose: https://youtu.be/7LtPNJetTFA
+
+Selenium testing: https://youtu.be/82_cVdEpVkM
+
+Weekly task: https://youtu.be/xnZkZL6EVRA
 
 # Selenium testing
 
