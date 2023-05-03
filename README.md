@@ -248,7 +248,8 @@ With this function we can write shorter our test case.
 
 # Task
 
-- Open the http://selenium.thinkcode.se page with selenium
-- Open the request password example by clicking onto the "Request password - fill out and submit a form" link. This click has to be done by the Selenium, so do not get directly the http://selenium.thinkcode.se/requestPassword url.
-- Request a new password on the example page. Check the printed username is correct or not.
+- Open the http://the-internet.herokuapp.com/login page with selenium
+- Check if you logged in correctly.
+- Logout
+- Try wrong credentials to login and check the login fail.
 
