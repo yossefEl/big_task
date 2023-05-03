@@ -1,6 +1,5 @@
 # Video
 
-https://www.youtube.com/watch?v=QtiYGKyRUIk
 
 # Selenium testing
 
@@ -72,7 +71,7 @@ https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/WebDriver.ht
 Next we maximize the window.
 
 ```
-    driver.manage().window().maximize();
+    this.driver.manage().window().maximize();
 ```
 
 We put this into the setup function that runs before the tests.
@@ -82,8 +81,8 @@ We put this into the setup function that runs before the tests.
     @Before
     public void setup() {
         ChromeOptions options = new ChromeOptions();
-        driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), options);
-        driver.manage().window().maximize();
+        this.driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), options);
+        this.driver.manage().window().maximize();
     }
 ```
 
@@ -91,8 +90,8 @@ In the after phase we quit from the browser if it is initialized well (non-null)
 ```
     @After
     public void close() {
-        if (driver != null) {
-            driver.quit();
+        if (this.driver != null) {
+            this.driver.quit();
         }
     }
 ```
@@ -103,6 +102,8 @@ We have to import the used libraries:
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.*;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import java.net.URL;
+import java.net.MalformedURLException;
 ```
 
 # Create a basic test
@@ -130,7 +131,7 @@ Not we set this timeout to 10 seconds, so it will throw a timeout exception if 1
 
 In the setup:
 ```
-wait = new WebDriverWait(driver, 10);
+this.wait = new WebDriverWait(driver, 10);
 ```
 
 In the class we add a variable:
