@@ -257,4 +257,4 @@ With this function we can write shorter our test case.
 - Check if you logged in correctly.
 - Logout
 - Try wrong credentials to login and check the login fail.
-
+- As usual: create a branch, upload it, create a mergre request and assign it to me.
