@@ -1,260 +1,93 @@
-# Video
+# Testing Sandbox 2024
 
-Docker compose: https://youtu.be/7LtPNJetTFA
 
-Selenium testing: https://youtu.be/82_cVdEpVkM
 
-Weekly task: https://youtu.be/xnZkZL6EVRA
+## Getting started
 
-# Selenium testing
+To make it easy for you to get started with GitLab, here's a list of recommended next steps.
 
-We can test UI or webpage with Selenium tests.
-Need to define the actions what the user should do to do different actions.
+Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
 
-# Docker Compose
+## Add your files
 
-The Docker has a second level of organization. 
-The composing. 
-At that level we can initate multiple containers with different configurations.
-
-https://docs.docker.com/compose/gettingstarted/
-
-We have a prepared docker compose that contain all of the necessary tools that makes us avaiable to run selenium tests in docker.
-That tool will setup a noVNC server, a chrome running in an image and an image that has gradle and java to be able to run the Selenium tests.
-
-The Selenium Chrome image has a port open 4444, where we can connect to the chrome.
-
-The noVNC server can be watched on the http://localhost:8081/ url after you started the compose.
-
-You can start the composition of images with the following command: 
+- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
+- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
 
 ```
-docker compose up
+cd existing_repo
+git remote add origin https://gitlab.inf.elte.hu/software-testing/testing-sandbox-2024.git
+git branch -M master
+git push -uf origin master
 ```
 
-After all of the containers are running we can have a console where we have the gradle with:
+## Integrate with your tools
 
-```
-docker exec -it selenium-docker-sandbox-ubuntu-1 bash
-```
+- [ ] [Set up project integrations](https://gitlab.inf.elte.hu/software-testing/testing-sandbox-2024/-/settings/integrations)
 
-# Gradle
+## Collaborate with your team
 
-We need to add new dependencies that makes us avaiable to use Selenium tests.
-We will use chrome driver but you can find other drivers as well: https://mvnrepository.com/artifact/org.seleniumhq.selenium
+- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
+- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
+- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
+- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
+- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
 
-Our new dependencies will be the following:
-```
-    testImplementation 'org.seleniumhq.selenium:selenium-java:2.52.0'
-    testImplementation 'org.seleniumhq.selenium:selenium-chrome-driver:3.141.59'
-    testImplementation('junit:junit:4.12'){
-        exclude group: 'org.hamcrest'
-    }
-    testImplementation 'org.hamcrest:hamcrest-library:1.3'
-    testImplementation "org.slf4j:slf4j-simple:1.7.9"
-```
+## Test and Deploy
 
-These dependencies loads everything that we will need for Selenium testing.
+Use the built-in continuous integration in GitLab.
 
-# Init and close the web driver
+- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
+- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
+- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
+- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
+- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
 
-We have to initialize the chrome driver first. We connect to the `selenium` image 4444 port to run there our selenium tests.
+***
 
-```
-    ChromeOptions options = new ChromeOptions();
-    driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), options);
-```
+# Editing this README
 
-We need also a variable to store the driver:
-```
-    private WebDriver driver;
-```
+When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
 
-https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/WebDriver.html
+## Suggestions for a good README
 
+Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
 
-Next we maximize the window.
+## Name
+Choose a self-explaining name for your project.
 
-```
-    this.driver.manage().window().maximize();
-```
+## Description
+Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
 
-We put this into the setup function that runs before the tests.
+## Badges
+On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
 
+## Visuals
+Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
 
-```
-    @Before
-    public void setup() {
-        ChromeOptions options = new ChromeOptions();
-        this.driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), options);
-        this.driver.manage().window().maximize();
-    }
-```
+## Installation
+Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
-In the after phase we quit from the browser if it is initialized well (non-null).
-```
-    @After
-    public void close() {
-        if (this.driver != null) {
-            this.driver.quit();
-        }
-    }
-```
+## Usage
+Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
 
-We have to import the used libraries:
+## Support
+Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
 
-```
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.*;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import java.net.URL;
-import java.net.MalformedURLException;
-```
+## Roadmap
+If you have ideas for releases in the future, it is a good idea to list them in the README.
 
-# Create a basic test
+## Contributing
+State if you are open to contributions and what your requirements are for accepting them.
 
-As an entry point, we can ask the driver, that created in the `setup`, to open a webpage.
+For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
 
-```
-    @Test
-    public void testSelenium() {
-        this.driver.get("https://www.inf.elte.hu/en/");
-    }
-```
+You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
 
-# HTML
+## Authors and acknowledgment
+Show your appreciation to those who have contributed to the project.
 
-https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started
+## License
+For open source projects, say how it is licensed.
 
-# Check a text in the webpage
-
-
-## Create a wait
-
-In setup phase we create a `WebDriverWait` that handles us how long do we will wait for a page loading or an element appearance.
-Not we set this timeout to 10 seconds, so it will throw a timeout exception if 10 second passes without fulfilling a condition.
-
-In the setup:
-```
-this.wait = new WebDriverWait(driver, 10);
-```
-
-In the class we add a variable:
-```
-private WebDriverWait wait;
-```
-
-What condition?
-
-```
-this.wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
-```
-
-To use this we have to import ExpectedConditions:
-
-```
-import org.openqa.selenium.support.ui.*;
-```
-
-With this line, we ask our `WebDriverWait` to wait for appearing of an element.
-This element will be denoted by tag name "body".
-That means in normal words: please wait until the body of the website will appear or throw an exception if it is longer than 10 seconds.
-
-## Get something
-
-Now we know there is a body, so we can get it... and get the text of it.
-We ask the driver to please return us the body and from that point the elemnet can give us the text of the whole body.
-
-```
-    WebElement resultElement = this.driver.findElement(By.tagName("body"));
-    System.out.println(resultElement.getText());
-```
-
-By default the gradle won't show standard output on every version, so we may have to enable now.
-Add into gradle the following:
-```
-test {
-    testLogging.showStandardStreams = true
-}
-```
-
-We can use multiple `By` functions, like `className`, `cssSelector`, `id​`, `name`, `linkText`, `partialLinkText​`, `tagName`.
-
-For more info: https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/By.html
-
-# Write nicer code
-
-If we create a final variable in the class that defines the `By`, we do not have to repeat ourselves.
-```
-    private final By bodyLocator = By.tagName("body");
-```
-
-After this we can use shorter version:
-```
-    this.wait.until(ExpectedConditions.visibilityOfElementLocated(bodyLocator));
-    WebElement resultElement = this.driver.findElement(bodyLocator);
-```
-
-# Do some interaction
-
-```
-    this.driver.get("https://www.inf.elte.hu/en/");
-
-    this.wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("footer-block")));
-    WebElement resultElement = this.driver.findElement(By.className("footer-block"));
-    System.out.println(resultElement.getText());
-    Assert.assertTrue(resultElement.getText().contains("2021 ELTE Faculty of Informatics"));
-
-    this.wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("search-bar-toggler")));
-    WebElement searchBarToggler = this.driver.findElement(By.className("search-bar-toggler"));
-    searchBarToggler.click();
-
-    this.wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("search")));
-    WebElement searchBar = this.driver.findElement(By.name("search"));
-    searchBar.sendKeys("Students\n");
-
-    this.wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
-    WebElement bodyAgain = this.driver.findElement(By.tagName("body"));
-    System.out.println(bodyAgain.getText());
-    Assert.assertTrue(bodyAgain.getText().contains("FOUND"));
-    Assert.assertTrue(bodyAgain.getText().contains("Current Students"));
-```
-
-# Do it nicer
-
-We can introduce a new function that waits for the visibility and after returns the element.
-
-```
-    private WebElement waitAndReturnElement(By locator) {
-        this.wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-        return this.driver.findElement(locator);
-    }
-```
-
-With this function we can write shorter our test case.
-
-```
-    this.driver.get("https://www.inf.elte.hu/en/");
-
-    WebElement resultElement = waitVisibiiltyAndFindElement(bodyLocator );
-    System.out.println(resultElement.getText());
-    Assert.assertTrue(resultElement.getText().contains("2021 ELTE Faculty of Informatics"));
-
-    WebElement searchTogglerElement = waitVisibiiltyAndFindElement(searchTogglerLocator);
-    searchTogglerElement.click();
-
-    WebElement searchBarElement = waitVisibiiltyAndFindElement(searchLocator);
-    searchBarElement.sendKeys("Student \n");
-
-    WebElement bodyElement = waitVisibiiltyAndFindElement(bodyLocator);
-    System.out.println(bodyElement.getText());
-    Assert.assertTrue(bodyElement.getText().contains("Student Support Centre"));
-```
-
-# Task
-
-- Open the http://the-internet.herokuapp.com/login page with selenium
-- Check if you logged in correctly.
-- Logout
-- Try wrong credentials to login and check the login fail.
-- As usual: create a branch, upload it, create a mergre request and assign it to me.
+## Project status
+If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
