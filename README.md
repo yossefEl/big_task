@@ -35,7 +35,7 @@ docker compose up
 After all of the containers are running we can have a console where we have the gradle with:
 
 ```
-docker exec -it selenium_testenv bash
+docker exec -it selenium-docker-sandbox-ubuntu-1 bash
 ```
 
 # Gradle
