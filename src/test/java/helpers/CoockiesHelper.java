@@ -26,20 +26,17 @@ public class CoockiesHelper {
 
 
     public static void usePrexisitngToken(WebDriver driver) {
-        // Create the _pf-pro_session cookie
         Cookie pfProSessionCookie = new Cookie.Builder("_pf-pro_session", SeleniumHelper.getConfigs().COOKIE_AUTH_TOKEN)
                 .domain(getConfigs().TARGET_WEBSITE)
                 .path("/")
                 .isHttpOnly(true)
                 .build();
 
-        // Create the user_signed_in cookie
         Cookie userSignedInCookie = new Cookie.Builder("user_signed_in", "true")
                 .domain(getConfigs().TARGET_WEBSITE)
                 .path("/")
                 .build();
 
-        // Add the cookies to the browser
         driver.manage().addCookie(pfProSessionCookie);
         driver.manage().addCookie(userSignedInCookie);
 
