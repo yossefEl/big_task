@@ -57,7 +57,7 @@ VNC: http://localhost:8081/vnc.html <br/>
 | **Fill simple form and send (e.g., Login)**         | Login form                                                                                                                             |
 | **Form sending with user**                          | Business adr<br>Password change<br>Rollback password change                                                                            |
 | **Logout**                                          | logged two times <br>after the cookies setting<br>after the end of the                                                                 |
-| **Fill input (text, radio, check...)**              | password, email                                                                                                                        |
+| **Fill input (text, radio, check...)**              | password, email and many other fields                                                                                                                     |
 | **Send a form**                                     | Login form                                                                                                                             |
 | **Static Page test**                                | Convert,Compress, Edit pages                                                                                                           |
 | **Multiple page test from array**                   | Convert,Compress, Edit pages                                                                                                           |
