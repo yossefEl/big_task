@@ -9,7 +9,6 @@ This is a big project that uses Selenium to automate the process according to th
 
 # Links
 VNC: http://localhost:8081/vnc.html <br/>
-Chosen Websites : https://docs.google.com/spreadsheets/d <br/>
 
 
 
