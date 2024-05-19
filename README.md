@@ -1,4 +1,4 @@
-# Big Selenium Project
+# Selenium Project
 This is a big project that uses Selenium to automate the process according to the checklist provided by the Professor. The project is divided into 2 parts:
 - Part 1: Basics
 - Part 2: Advanced
