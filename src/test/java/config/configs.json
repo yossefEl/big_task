@@ -1,0 +1,27 @@
+{
+  "TARGET_WEBSITE": "www.printfriendly.com",
+  "DOWNLOAD_FOLDER": "${user.dir}/src/test/java/resources",
+  "FILE_UPLOAD_TEST": "/src/test/java/resources/file1.gif",
+  "HEADERS_AGENT": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+  "TEMP_MAIL_WEBSITE": "https://temp-mail.org/en/",
+  "COOKIE_AUTH_TOKEN":"ai9lMGlBVDRjdTNELzBOeWpzM1BxcVE1ck1OMkZ5bjRLRnlJdTh2bmdKbGh0L2lTRGY2VjExays4TDRzVlY0K2ZuWVhCbkhGWUxrUDd3OVozdGk4R1pDWVFCdFZTQVJLSy9Fd21iZjRVN0tRanp3eWpJdTM5cTl0NVVJKzJXZkMrNlExakZlS2VJRE1DdXd5VHpOZ0k5R1JTdTVCZnV6U1Z5cTNxNGNZaWJaV3l4Z2J2R1JPS0NnTjhEQ3RCR1JsVGVYS2YwMTN3UDB2NHR1Wk5YQmcwVkxEYUo0WEJCcmo2V2Vsc1RoMEhOMD0tLTdxbXNud1R2QkFKUDhkanZNTnhpb0E9PQ%3D%3D--5f6785a0e37d9175af477f887defaaad317f58c6",
+  "waitDuration": 10,
+  "goodUsername": "lixij34873@lucvu.com",
+  "goodPassword": "kE6mvQST#U2kdTT",
+  "changePasswordTemp": "kE6mvQSTTemp#U2kdTT",
+  "wrongUsername": "tomsmith@wrong.com",
+  "wrongPassword": "3oi4534u52@Wrong",
+
+  "businessAddress": {
+    "street": "Street:  Wesselenyi u. 52.",
+    "city": "City:  Rabasebesn",
+    "state": "State/province/area:   Gyor-Moson-Sopron",
+    "zip": "Zip code:  9327",
+    "country": "Country:  Hungary"
+  },
+  "pagesPaths2Visit": [
+    "pdf-tools/pdf-converter",
+    "pdf-tools/compress-pdf",
+    "pdf-tools/edit-pdf"
+  ]
+}

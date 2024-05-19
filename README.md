@@ -1,93 +1,92 @@
-# Testing Sandbox 2024
+# Big Selenium Project
+This is a big project that uses Selenium to automate the process according to the checklist provided by the Professor. The project is divided into 2 parts:
+- Part 1: Basics
+- Part 2: Advanced
+# Commands I always forget 😅
+`docker exec -it selenium-docker-sandbox-ubuntu-1 bash`<br/>
+`export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-arm64`<br/>
+`export PATH=$JAVA_HOME/bin:$PATH`<br/>
+
+# Links
+VNC: http://localhost:8081/vnc.html <br/>
+Chosen Websites : https://docs.google.com/spreadsheets/d <br/>
 
 
 
-## Getting started
+# Checklist
+- [ ] Part 1: Basics
+  - [x] Fill simple form and send (eg. Login)
+  - [x] Form sending with user
+  - [x] Logout
+  - [x] Fill input (text,radio,check...)
+  - [x] Send a form
+  - [x] Static Page test
+  - [x] Multiple page test from array (easily extendable static page tests)
+  - [x] complex xpath (eg. //div//a[@href='asd'])
+  - [x] Filling or reading textarea content
+  - [x] Filling or reading drop-down
+  - [x] Filling or reading Radio button
+  - [x] At least 4 class
+  - [x] At least 6 class
+  - [x] At least 8 class
+  - [x] Explicit wait
+  - [x] Reading the page title
+  - [x] Page object pattern
+  - [x] BasePage object class
+  - [x] Test suite looks like readable test description
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+- Part 2: Advanced
+  - [x] WebDriver configuration (modify something in the browser options)
+  - [x] Manipulate cookie meaningfully (without ui), e.g. avoid showing up consent popup without clicking onto it
+  - [x] Hover test
+  - [x] Drag&Drop
+  - [x] File Upload
+  - [x] History test (browser back button)
+  - [x] Test case dependencies
+  - [ ] E-mail checking (eg. Registration with activation e-mail): Unable to do this because of the Captcha
+  - [x] Test with random data
+  - [ ] Download multiple files to a folder from an user protected page: Unable to do this because the chrome version is too old
+  - [x] Using configuration file
+  - [x] JavascriptExecutor
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
 
-## Add your files
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+# MyOwnChecklistDescription
 
-```
-cd existing_repo
-git remote add origin https://gitlab.inf.elte.hu/software-testing/testing-sandbox-2024.git
-git branch -M master
-git push -uf origin master
-```
+| Task                                                 | Description on Hugging Face Website                                                   |
+|------------------------------------------------------|----------------------------------------------------------------------------------------|
+| **Fill simple form and send (e.g., Login)**          | Automate filling the login form and submitting it to access your account.              |
+| **Form sending with user**                           | Automate a form submission that requires user interaction, like setting a profile.    |
+| **Logout**                                           | Automate the process of logging out from the website.                                  |
+| **Fill input (text, radio, check...)**               | Automate entering data into different types of input fields on a form.                 |
+| **Send a form**                                      | Automate the process of submitting a general form (like feedback or settings).         |
+| **Static Page test**                                 | Check the load and display of static pages like the homepage or documentation.         |
+| **Multiple page test from array**                    | Automate visiting multiple static pages using an array of URLs to check each page.    |
+| **Complex xpath**                                    | Use a complex XPath to locate elements like links within nested divs.                  |
+| **Filling or reading textarea content**              | Automate entering or verifying text in a textarea field, like a model description.    |
+| **Filling or reading drop-down**                     | Automate selecting options from a drop-down menu, such as sorting options in search.  |
+| **Filling or reading Radio button**                  | Automate checking a radio button, such as selecting a subscription plan.               |
+| **At least 4 class, 6 class, 8 class**               | Check the presence and correctness of CSS classes on the page elements.               |
+| **Explicit wait**                                    | Implement waits to ensure elements are loaded before actions are taken.               |
+| **Reading the page title**                           | Automate fetching and verifying the title of the webpage.                             |
+| **Page object pattern**                              | Organize test scripts using the Page Object design pattern for better maintenance.    |
+| **BasePage object class**                            | Create a base class for common page properties and methods used across tests.         |
+| **Test suite looks like readable test description**  | Structure your test suite so that the tests read like a clear description of actions. |
 
-## Integrate with your tools
+For the "Advanced" tasks:
 
-- [ ] [Set up project integrations](https://gitlab.inf.elte.hu/software-testing/testing-sandbox-2024/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+| Task                                                   | Description on Hugging Face Website                                                   |
+|--------------------------------------------------------|----------------------------------------------------------------------------------------|
+| **WebDriver configuration**                            | Modify browser settings, like disabling pop-ups or setting window sizes.              |
+| **Manipulate cookie meaningfully**                     | Automate cookie manipulation to bypass pop-ups without manual clicks.                 |
+| **Hover test**                                         | Test UI changes that occur when hovering over elements like menu options.             |
+| **Drag & Drop**                                        | Automate drag and drop actions, particularly in interactive UI elements.              |
+| **File Upload**                                        | Automate uploading files, possibly to a model repository.                             |
+| **History test**                                       | Test the browser back button to ensure it navigates correctly through user history.   |
+| **Test case dependencies**                             | Ensure tests that depend on the outcome of others are executed in the correct order.  |
+| **E-mail checking**                                    | Test the email sending and receiving process, like account activation emails.         |
+| **Test with random data**                              | Use randomly generated data in tests to ensure robustness.                            |
+| **Download multiple files to a folder**                | Automate downloading files from a protected user area to a specified folder.          |
+| **Using configuration file**                           | Use a config file to manage test settings and parameters for different environments.  |
+| **JavascriptExecutor**                                 | Execute JavaScript code during tests for scenarios that require it, like scrolling.   |
+.
